@@ -1,0 +1,3 @@
+no.,name,type,label,value_formula,placeholder,valid_formula1,error1,valid_formula2,error2,valid_formula3,error3,valid_formula4,error4,valid_formula5,error5,remarks
+1,name1,InputType1,ITEM1,"""1""",test test,"value === """"",入力してください,"!(new RegExp(""^[0-9]+$"").test(value))",数字を入力してください,,,,,,,
+2,name2,InputType1,ITEM2,"""2""",test test,"value === """"",入力してください,"!(new RegExp(""^[0-9]+$"").test(value))",数字を入力してください,"parseInt(value,10) < parseInt(document.querySelector('input[name=""name1""]').value,10)",name1以上の値をいれてください,,,,,

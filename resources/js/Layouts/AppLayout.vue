@@ -26,7 +26,7 @@ header{
   width: 100%;
   height: 32px;
   background-color: white;
-  border: 1px solid black;
+  border-bottom: 1px solid black;
 }
 .header-space{
   position: block;
@@ -40,7 +40,7 @@ footer{
   width: 100%;
   height: 32px;
   background-color: white;
-  border: 1px solid black;
+  border-top: 1px solid black;
   bottom: 0;
 }
 .footer-space{

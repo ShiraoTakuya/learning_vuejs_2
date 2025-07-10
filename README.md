@@ -52,6 +52,13 @@ server: {
 },
 ```
 
+### `bootstrap/app.php`の設定
+
+api.phpを有効にするため、`withRouting`内に以下を追加します：
+```php
+api: __DIR__.'/../routes/api.php'
+```
+
 ### 権限設定（Linuxサーバーの場合）
 
 ```bash
@@ -70,26 +77,27 @@ npm run dev
 
 ## 🛠 カスタマイズ方法（画面追加など）
 
-画面を追加する場合は以下のファイルを作成・編集します：
+画面を追加する場合は、以下のファイルを作成・編集します：
 
 - `resources/js/Pages/*.vue`  
-  → Vueコンポーネント（ページ）の定義ファイル
+  → Vue コンポーネント（ページ）の定義ファイル  
+    例：`resources/js/Pages/Page1.vue`
 
 - `routes/web.php`  
-  → ルーティング設定（例：`Route::get('/page2', [CommonController::class, 'page2']);`）
+  → ルーティングの設定  
+    例：`Route::get('/page1', [CommonController::class, 'page1']);`
 
 - `app/Http/Controllers/CommonController.php`  
-  → コントローラーから Inertia を通じてページを返す
+  → コントローラーから Inertia を通じてページを返す  
+    例：`return Inertia::render('Page1');` と書くと、`resources/js/Pages/Page1.vue` が描画されます。
 
-- `resources/js/VueConstructor.js`（任意）  
-  → Vue コンポーネントの共通ロジックなどを定義したい場合に使用
+- `app/Http/Controllers/ConstructorController.php`  
+  → Vue コンポーネントに関するサーバー側の初期化ロジックなどを定義  
+    ※Vue には Blade のような「サーバー側コンポーネント処理」がないため、その代替として使用します。  
+    ※Vue コンポーネントのファイル名と、このコントローラー内に定義する関数名は一致させるルールとしています。
 
 ---
 
 ## 💡 補足メモ
 
-- コントローラーで `return Inertia::render('Page1');` と書くと、  
-  `resources/js/Pages/Page1.vue` が描画されます。
-- ルート定義と `.vue` ファイル名は必ず一致させましょう。
-- 開発時はポート 5173（Viteのデフォルト）をファイアウォールやDockerで許可しておく必要があります。
-
+- 開発時はポート `5173`（Vite のデフォルト）をファイアウォールや Docker で許可しておく必要があります。

@@ -2,6 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Inertia\VueConstructor;
+use App\Http\Controllers\ConstructorController;
 
-Route::get('/dynamic-form-component', [VueConstructor::class, 'DynamicFormComponent']);
+Route::get('/dynamic-form-component', [ConstructorController::class, 'DynamicFormComponent']);
